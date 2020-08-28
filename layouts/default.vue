@@ -1,62 +1,71 @@
 <template>
   <div>
+
+    <header class="header">
+      <div class="header__left"></div>
+
+      <div class="header__right">
+        <nuxt-link class="link" to="/">About</nuxt-link>
+        <nuxt-link class="link" to="/experience">Experience</nuxt-link>
+        <nuxt-link class="link" to="/projects">Projects</nuxt-link>
+        <!-- <g-link to="/">About</g-link> -->
+        <!-- <g-link to="/experience">Experience</g-link> -->
+        <!-- <g-link to="/projects">Projects</g-link> -->
+        <ToggleTheme />
+      </div>
+    </header>
+
     <Nuxt />
+
   </div>
 </template>
 
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+import ToggleTheme from '~/components/ToggleTheme.vue'
+
+export default {
+  components: {
+    ToggleTheme
+  }
+}
+</script>
+
+<style lang="scss">
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: var(--header-height);
+  padding: 0 calc(var(--space) / 2);
+  top:0;
+  z-index: 10;
+
+  a {
+    font-size: 0.8rem;
+    margin-top: -5px;
+    margin-right: 20px;
+    color: var(--body-color);
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 1300px) {
+    //Make header sticky for large screens
+    position: sticky;
+    width: 100%;
+  }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.main {
+  margin: 0 auto;
+  padding: 1.5vw 15px 0;
 }
 </style>

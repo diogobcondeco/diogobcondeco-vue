@@ -1,73 +1,237 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        diogobcondeco.com
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div class="container content-box">
+    <NuxtChild :show-footer="false" />
+    <h1 class="title">
+      <Greeting
+        :day-time="dayTime"
+        :language="language"
+      >
+        Good morning
+      </Greeting> Diogo here.
+    </h1>
+    <h2 class="subtitle">
+      I’m a Front End Developer that loves to <SpecialLink to="https://github.com/diogobcondeco">build</SpecialLink> things.<br>
+    </h2>
+    <p class="paragraph">
+      I'm passionate about <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & <SpecialLink to="https://reactjs.org/">React</SpecialLink>.
+    </p>
+    <p class="paragraph">
+      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior and contribute to it.
+    </p>
+    <p class="paragraph">
+      Dreaming about traveling the 🌍 while 💻 remotely.
+    </p>
+    <p class="paragraph">
+      Lover of 🍣🍔🍕✈🚐.
+    </p>
+    <p class="paragraph">
+      You can follow me on <SpecialLink to="https://twitter.com/diogobcondeco">Twitter</SpecialLink>, <SpecialLink to="https://github.com/diogobcondeco">GitHub</SpecialLink> & <SpecialLink to="https://www.linkedin.com/in/diogobcondeco/">LinkedIn</SpecialLink>.
+    </p>
+    <a
+      href="mailto:diogobcondeco@gmail.com"
+      class="paragraph mail-link"
+    >
+      ↳ Talk to me.
+    </a>
   </div>
 </template>
 
 <script>
-export default {}
+import SpecialLink from '~/components/Link'
+import Greeting from '~/components/Greeting'
+
+const EARLY_MORNING = 'EARLY_MORNING'
+const MORNING = 'MORNING'
+const AFTERNOON = 'AFTERNOON'
+const EVENING = 'EVENING'
+
+function getDayTime () {
+  const hourNow = new Date(Date.now()).getHours()
+
+  switch (true) {
+    case (hourNow >= 5 && hourNow < 7):
+      return EARLY_MORNING
+    case (hourNow >= 12 && hourNow < 17):
+      return AFTERNOON
+    case (hourNow >= 17 || hourNow < 5):
+      return EVENING
+    default:
+      return MORNING
+  }
+}
+
+(function() {
+  window.__onThemeChange = function() {};
+  function setTheme(newTheme) {
+    window.__theme = newTheme;
+    preferredTheme = newTheme;
+    document.body.setAttribute('data-theme', newTheme);
+    window.__onThemeChange(newTheme);
+  }
+
+  var preferredTheme;
+  try {
+    preferredTheme = localStorage.getItem('theme');
+  } catch (err) { }
+
+  if (!preferredTheme) {
+    preferredTheme = getDayTime() === EVENING
+      ? 'dark'
+      : 'light'
+  }
+
+  window.__setPreferredTheme = function(newTheme) {
+    setTheme(newTheme);
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch (err) {}
+  }
+
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  darkQuery.addListener(function(e) {
+    window.__setPreferredTheme(e.matches ? 'dark' : 'light')
+  });
+
+  setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+})();
+
+export default {
+  components: { SpecialLink, Greeting },
+  metaInfo: {
+    title: 'About',
+    meta: [
+      {
+        name: 'description',
+        content: 'Hi, I’m Diogo and I’m a Junior Front End Developer that loves to build things.'
+      },
+      {
+        key: 'og:title',
+        name: 'og:title',
+        content: 'Diogo Condêço',
+      },
+      {
+        key: 'twitter:title',
+        name: 'twitter:title',
+        content: 'Diogo Condêço',
+      },
+      {
+        key: 'og:url',
+        name: 'og:url',
+        content: 'https://diogobcondeco.com/',
+      },
+      {
+        key: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary',
+      },
+      {
+        key: 'twitter:creator',
+        name: 'twitter:creator',
+        content: '@diogobcondeco',
+      },
+      {
+        key: 'og:description',
+        name: 'og:description',
+        content: 'Hi, I’m Diogo and I’m a Junior Front End Developer that loves to build things.',
+      },
+      {
+        key: 'twitter:description',
+        name: 'twitter:description',
+        content: 'Hi, I’m Diogo and I’m a Junior Front End Developer that loves to build things.',
+      },
+    ]
+  },
+  data () {
+    return {
+      dayTime: MORNING,
+      language: 'en'
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.dayTime = getDayTime()
+      this.language = navigator.language.substr(0, 2)
+      //add support for swiss german
+      let locale = navigator.language
+      if(locale === 'de-CH') this.language = 'de_CH'
+    }, 2000)
+  }
+}
 </script>
 
-<style>
+<style lang="scss">
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   display: flex;
+  margin: 0 auto;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+
+  a:hover {
+    opacity: 1;
+  }
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
 }
 
 .subtitle {
+  font-size: 1.4rem;
   font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  line-height: 2.25rem;
+  max-width: 550px;
 }
 
-.links {
-  padding-top: 15px;
+.paragraph {
+ 	font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 750px;
+}
+
+@media only screen and (min-width: 600px)  {
+  .container {
+    min-height: calc(100vh - 200px);
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    margin-top: 0;
+    line-height: 2.4rem;
+  }
+
+  .paragraph {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+
+  .paragraph-small {
+    font-size: 0.8rem;
+  }
+}
+
+a.mail-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--body-color, #444a51);
+}
+
+.resize-enter-active, .resize-leave-active {
+  transition: max-height .5s, opacity .4s;
+  max-height: 600px;
+}
+.resize-enter, .resize-leave-to {
+  max-height: 0;
+  opacity: 0;
 }
 </style>
