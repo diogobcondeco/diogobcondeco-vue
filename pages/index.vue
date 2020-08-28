@@ -15,7 +15,7 @@
       I'm passionate about <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & <SpecialLink to="https://reactjs.org/">React</SpecialLink>.
     </p>
     <p class="paragraph">
-      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior and contribute to it.
+      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior and contributing to it.
     </p>
     <p class="paragraph">
       Dreaming about traveling the 🌍 while 💻 remotely.
