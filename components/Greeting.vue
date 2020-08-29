@@ -8,14 +8,14 @@
       key="1"
       class="slide"
     >
-      {{ greeting }},
+      {{ greeting }}
     </span>
     <span
       v-else
       key="2"
       class="slide"
     >
-      {{ greeting }},
+      {{ greeting }}
     </span>
   </transition>
 </template>

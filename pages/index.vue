@@ -6,16 +6,16 @@
         :day-time="dayTime"
         :language="language"
       >
-      </Greeting> Diogo here.
+      </Greeting>
     </h1>
     <h2 class="subtitle">
-      I’m a Front End Developer that loves to <SpecialLink to="https://github.com/diogobcondeco">build</SpecialLink> things.<br>
+      I’m Diogo, a Front End Developer that loves to <SpecialLink to="https://github.com/diogobcondeco">build</SpecialLink> things.<br>
     </h2>
     <p class="paragraph">
       I'm passionate about <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & <SpecialLink to="https://reactjs.org/">React</SpecialLink>.
     </p>
     <p class="paragraph">
-      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior and contributing to it.
+      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior & contributing to it.
     </p>
     <p class="paragraph">
       Dreaming about traveling the 🌍 while 💻 remotely.
