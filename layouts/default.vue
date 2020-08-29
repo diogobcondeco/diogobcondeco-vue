@@ -6,11 +6,8 @@
 
       <div class="header__right">
         <nuxt-link class="link" to="/">About</nuxt-link>
-        <nuxt-link class="link" to="/experience">Experience</nuxt-link>
-        <nuxt-link class="link" to="/projects">Projects</nuxt-link>
-        <!-- <g-link to="/">About</g-link> -->
-        <!-- <g-link to="/experience">Experience</g-link> -->
-        <!-- <g-link to="/projects">Projects</g-link> -->
+        <!-- <nuxt-link class="link" to="/experience">Experience</nuxt-link> -->
+        <!-- <nuxt-link class="link" to="/projects">Projects</nuxt-link> -->
         <ToggleTheme />
       </div>
     </header>
