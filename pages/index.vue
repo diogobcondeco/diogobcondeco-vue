@@ -12,10 +12,10 @@
       I’m Diogo, a Front End Developer that loves to <SpecialLink to="https://github.com/diogobcondeco">build</SpecialLink> things.<br>
     </h2>
     <p class="paragraph">
-      I'm passionate about <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & <SpecialLink to="https://reactjs.org/">React</SpecialLink>.
+      Passionate about <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & <SpecialLink to="https://reactjs.org/">React</SpecialLink>.
     </p>
     <p class="paragraph">
-      Goals of becoming a <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> Senior & contributing to it.
+      Goals of mastering <SpecialLink to="https://vuejs.org/">Vue</SpecialLink> & contributing to it.
     </p>
     <p class="paragraph">
       Dreaming about traveling the 🌍 while 💻 remotely.
