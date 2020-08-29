@@ -5,7 +5,7 @@
       <div class="header__left"></div>
 
       <div class="header__right">
-        <nuxt-link class="link" to="/">About</nuxt-link>
+        <!-- <nuxt-link class="link" to="/">About</nuxt-link> -->
         <!-- <nuxt-link class="link" to="/experience">Experience</nuxt-link> -->
         <!-- <nuxt-link class="link" to="/projects">Projects</nuxt-link> -->
         <ToggleTheme />
